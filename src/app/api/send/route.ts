@@ -121,6 +121,7 @@ export async function POST(request: Request) {
             country,
             region,
             city,
+            ip,
             distinctId: id,
           });
         } catch (e: any) {
@@ -152,6 +153,7 @@ export async function POST(request: Request) {
       let referrerPath: string;
       let referrerQuery: string;
       let referrerDomain: string;
+      let referrerString = referrer;
 
       // UTM Params
       const utmSource = currentUrl.searchParams.get('utm_source');
@@ -178,6 +180,8 @@ export async function POST(request: Request) {
         referrerPath = referrerUrl.pathname;
         referrerQuery = referrerUrl.search.substring(1);
 
+        referrerString = referrerUrl.href;
+
         if (referrerUrl.hostname !== 'localhost') {
           referrerDomain = referrerUrl.hostname.replace(/^www\./, '');
         }
@@ -197,6 +201,7 @@ export async function POST(request: Request) {
         referrerPath: safeDecodeURI(referrerPath),
         referrerQuery,
         referrerDomain,
+        referrer: referrerString,
 
         // Session
         distinctId: id,

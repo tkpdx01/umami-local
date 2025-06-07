@@ -38,6 +38,7 @@ model Session {
   country    String?   @db.Char(2)
   region     String?   @db.Char(20)
   city       String?   @db.VarChar(50)
+  ip         String?   @db.VarChar(45)
   distinctId String?   @map("distinct_id") @db.VarChar(50)
   createdAt  DateTime? @default(now()) @map("created_at") @db.Timestamp(0)
 
@@ -102,6 +103,7 @@ model WebsiteEvent {
   referrerPath   String?   @map("referrer_path") @db.VarChar(500)
   referrerQuery  String?   @map("referrer_query") @db.VarChar(500)
   referrerDomain String?   @map("referrer_domain") @db.VarChar(500)
+  referrer       String?   @db.VarChar(500)
   pageTitle      String?   @map("page_title") @db.VarChar(500)
   gclid          String?   @map("gclid") @db.VarChar(255)
   fbclid         String?   @map("fbclid") @db.VarChar(255)

@@ -13,6 +13,7 @@ export async function createSession(data: Prisma.SessionCreateInput) {
     country,
     region,
     city,
+    ip,
     distinctId,
   } = data;
 
@@ -28,6 +29,7 @@ export async function createSession(data: Prisma.SessionCreateInput) {
       country,
       region,
       city,
+      ip,
       distinctId,
     },
   });

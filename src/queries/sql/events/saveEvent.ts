@@ -20,6 +20,7 @@ export interface SaveEventArgs {
   referrerPath?: string;
   referrerQuery?: string;
   referrerDomain?: string;
+  referrer?: string;
 
   // Session
   distinctId?: string;
@@ -73,6 +74,7 @@ async function relationalQuery({
   referrerPath,
   referrerQuery,
   referrerDomain,
+  referrer,
   eventName,
   eventData,
   utmSource,
@@ -105,6 +107,7 @@ async function relationalQuery({
       referrerPath: referrerPath?.substring(0, URL_LENGTH),
       referrerQuery: referrerQuery?.substring(0, URL_LENGTH),
       referrerDomain: referrerDomain?.substring(0, URL_LENGTH),
+      referrer: referrer?.substring(0, URL_LENGTH),
       pageTitle: pageTitle?.substring(0, PAGE_TITLE_LENGTH),
       gclid,
       fbclid,
@@ -191,6 +194,7 @@ async function clickhouseQuery({
     referrer_path: referrerPath?.substring(0, URL_LENGTH),
     referrer_query: referrerQuery?.substring(0, URL_LENGTH),
     referrer_domain: referrerDomain?.substring(0, URL_LENGTH),
+    referrer: referrer?.substring(0, URL_LENGTH),
     page_title: pageTitle?.substring(0, PAGE_TITLE_LENGTH),
     gclid: gclid,
     fbclid: fbclid,
